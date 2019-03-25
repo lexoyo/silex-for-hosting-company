@@ -15,8 +15,8 @@ module.exports.prototype.getOptions = function(session) {
     vhostsUrl: '/hosting/custom-provider/vhost',
     buyDomainUrl: 'https://www.custom-provider.com/domains',
     skipVhostSelection: true,
-    skipFolderSelection: true,
-    afterPublishMessage: 'Thx for using our service.<br><br>',
+    skipFolderSelection: false,
+    afterPublishMessage: 'Thx for using our service.<br><br>This is a custom message, you can include data from the user\'s session too, e.g. user is logged in as "' + infos.username +'".',
   };
 };
 
@@ -25,7 +25,7 @@ module.exports.prototype.getVhosts = async function(session) {
   return [{
     name: WEBSITE_FOLDER_NAME,
     domainUrl: `/hosting/custom-provider/vhost/get`,
-    skipDomainSelection: false,
+    skipDomainSelection: true,
     publicationPath: {
       //absPath: `/ce/github/get/${ WEBSITE_FOLDER_NAME }/gh-pages`,
       name: WEBSITE_FOLDER_NAME,
